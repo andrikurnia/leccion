@@ -1,0 +1,57 @@
+doctype HTML
+html
+  head
+    title Leccion
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  body
+    / #fb-root
+    / javascript:
+    /   (function(d, s, id) {
+    /     var js, fjs = d.getElementsByTagName(s)[0];
+    /     if (d.getElementById(id)) return;
+    /     js = d.createElement(s);
+    /     js.id = id;
+    /     js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=288641757957965";
+    /     fjs.parentNode.insertBefore(js, fjs);
+    /   }(document, 'script', 'facebook-jssdk'));
+    - if alert
+      .alert.alert-info = alert
+    - elsif notice
+      .alert.alert-warning = notice
+    nav.navbar.navbar-inverse role="navigation"
+      .container
+        .container-fluid
+          .navbar-header
+            a.navbar-brand href="#{root_url}" Leccion
+    section#nav
+      .container
+        ul.nav.nav-pills
+          li
+            a href="#" = icon('home', 'Home')
+          li
+            a href="#" = icon('rss', 'Berita')
+          / li.pull-right
+          /   a href="#" = icon('facebook-square', '', class: 'fa-lg')
+          / li.pull-right
+          /   a href="#" = icon('github-square', '', class: 'fa-lg') 
+
+          - if user_signed_in?
+            li.pull-right
+              = link_to "Logout", destroy_user_session_path, method: :delete
+            li.pull-right
+              a href="#" = current_user.email
+            li.pull-right
+              = link_to "Edit", edit_user_registration_path
+          - else
+            li.pull-right
+              = link_to new_user_session_path do
+                = icon('lock', 'Login')
+            li.pull-right
+              = link_to new_user_registration_path do
+                = icon('', 'Register')
+    .container
+      = yield
+
+    section#footer
