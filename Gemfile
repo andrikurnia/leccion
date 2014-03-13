@@ -52,6 +52,10 @@ gem 'carrierwave'
 gem "mini_magick", "~> 3.7.0"
 gem 'kaminari'
 
+group :production do 
+  gem 'pg'
+end
+
 group :development do
   gem 'pry-rails'
   gem 'debugger'
