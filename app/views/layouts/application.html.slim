@@ -16,10 +16,10 @@ html
     /     js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=288641757957965";
     /     fjs.parentNode.insertBefore(js, fjs);
     /   }(document, 'script', 'facebook-jssdk'));
-    - if alert
-      .alert.alert-info = alert
-    - elsif notice
-      .alert.alert-warning = notice
+    / - if alert
+    /   .alert.alert-info = alert
+    / - elsif notice
+    /   .alert.alert-warning = notice
     nav.navbar.navbar-inverse role="navigation"
       .container
         .container-fluid
@@ -29,9 +29,9 @@ html
       .container
         ul.nav.nav-pills
           li
-            a href="#" = icon('home', 'Home')
+            = link_to icon('home', 'Home'), root_url
           li
-            a href="#" = icon('rss', 'Berita')
+            a href="#" = icon('rss', 'Archive')
           / li.pull-right
           /   a href="#" = icon('facebook-square', '', class: 'fa-lg')
           / li.pull-right
@@ -41,9 +41,9 @@ html
             li.pull-right
               = link_to "Logout", destroy_user_session_path, method: :delete
             li.pull-right
-              a href="#" = current_user.email
+              = link_to current_user.email, profile_show_path
             li.pull-right
-              = link_to "Edit", edit_user_registration_path
+              = link_to "Create Post", new_post_path
           - else
             li.pull-right
               = link_to new_user_session_path do

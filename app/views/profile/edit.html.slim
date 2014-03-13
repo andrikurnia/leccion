@@ -1,0 +1,6 @@
+= form_for @user, url: avatar_path do |f|
+  .field
+    = f.label :avatar
+    = f.file_field :avatar
+  .field
+    = f.submit

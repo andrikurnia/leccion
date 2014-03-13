@@ -1,0 +1,11 @@
+h4 User Profile
+table.table.table-striped.table-condensed
+  tr
+    td E-mail
+    td = ":"
+    td = @user.email
+  tr
+    td Avatar
+    td = ":"
+    td 
+      img src="#{@user.avatar.small}"

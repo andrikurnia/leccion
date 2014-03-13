@@ -1,4 +1,12 @@
 Leccion::Application.routes.draw do
+
+  controller :profile do
+    get "avatar" => :edit
+    patch "avatar" => :update
+  end
+
+  get "profile/show"
+
   devise_for :users
   resources :posts
 
